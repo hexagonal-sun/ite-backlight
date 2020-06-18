@@ -8,9 +8,11 @@ project(
 
 libusb_dep = dependency('libusb-1.0')
 
+ite_backlight_src = ['ite-device.cpp', 'main.cpp']
+
 executable(
   'ite-backlight',
-  'main.cpp',
+  ite_backlight_src,
   install : true,
   dependencies : libusb_dep
 )
