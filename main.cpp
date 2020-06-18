@@ -26,9 +26,7 @@ int main()
     try {
         ITEDevice iteDev(ctx);
 
-        for (const auto quadrant : allQuadrants)
-            iteDev.setColour(quadrant, 0xff, 0, 0);
-
+        iteDev.setMonoColour({0x00, 0xff, 0xff}, ITEBrightness::VERY_BRIGHT);
     } catch (std::exception &e) {
         std::cerr << "Error: " << e.what() << "\n";
         return 1;
