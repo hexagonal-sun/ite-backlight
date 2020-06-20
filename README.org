@@ -1,0 +1,57 @@
+#+TITLE: ITE-backlight
+
+This project aims to provide a set of simple utilities for controlling ITE 8291
+keyboard backlight controllers. After compilation a set of binaries with the
+~ite-~ prefix will be created; each one allows you to set your keyboard to the
+particular style given in the binary name prefix. For example, the ~ite-wave~
+binary can be used to set the 'wave' style on the keyboard. Each binary can be
+executed to get the specific options applicable to that style.
+
+** Installation
+
+*** Arch Linux
+If you are using Arch Linux, you can install ~ite-backlight~ from AUR:
+
+#+begin_example
+yay -S ite-backlight
+#+end_example
+
+This package also includes udev rules which means ITE utilities won't need to be
+executed as root to access the device (requires restart after installation).
+
+** Building
+
+*** Dependencies
+
+The only run-time dependency of these utilities is the [[https://libusb.info/][libusb]] library. To
+build ~ite-backlight~ you'll need:
+
+- [[https://mesonbuild.com/][meson]]
+- [[https://github.com/microsoft/GSL][GSL]]
+- [[https://www.boost.org/][boost]]
+
+*** Compilation
+
+Once you have the dependencies installed you should be able to build with the
+following commands:
+
+#+BEGIN_EXAMPLE
+cd ite-backlight
+meson setup build
+ninja -C build
+#+END_EXAMPLE
+
+** Commands
+
+The following commands are currently available:
+
+- ~ite-static~: Set the keyboard to a static set of four colours spread across
+  it's four quadrants.
+- ~ite-mono~: Set the keyboard backlight to a single colour across the keyboard.
+- ~ite-wave~: Move the provided colour palette across the keyboard in a
+  Mexican-wave style.
+- ~ite-breathe~: Fade in and out the given colour palette across the keyboard.
+- ~ite-flash~: Flash the given colour palette across the keyboard.
+
+Each command has various options that can be accessed, just run the utility with
+no options.
