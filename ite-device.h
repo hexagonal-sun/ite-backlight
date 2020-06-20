@@ -14,9 +14,9 @@ class ITEDevice
         ITEDevice(libusb_context *ctx);
         ~ITEDevice();
 
-        void seBreatheStyle(std::array<Colour, 7> palette,
-                            ITESpeed speed,
-                            ITEBrightness brightness);
+        void setBreatheStyle(std::array<Colour, 7> palette,
+                             Speed speed,
+                             ITEBrightness brightness);
 
         void setStaticStyle(std::array<Colour, 4> palette,
                             ITEBrightness brightness);

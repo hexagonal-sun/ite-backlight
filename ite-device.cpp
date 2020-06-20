@@ -3,14 +3,6 @@
 
 #include "ite-device.h"
 
-const static std::unordered_map<ITESpeed, uint8_t> speedMap = {
-    {ITESpeed::VERY_SLOW, 0x0a},
-    {ITESpeed::SLOW,      0x07},
-    {ITESpeed::MEDIUM,    0x05},
-    {ITESpeed::FAST,      0x03},
-    {ITESpeed::VERY_FAST, 0x01}
-};
-
 const static std::unordered_map<ITEBrightness, uint8_t> brightnessMap {
     {ITEBrightness::OFF,         0x00},
     {ITEBrightness::VERY_DIM,    0x08},
@@ -74,17 +66,16 @@ ITEDevice::~ITEDevice()
     libusb_close(handle);
 }
 
-void ITEDevice::seBreatheStyle(std::array<Colour, 7> palette, ITESpeed speed,
-                               ITEBrightness brightness)
+void ITEDevice::setBreatheStyle(std::array<Colour, 7> palette, Speed speed,
+                                ITEBrightness brightness)
 {
     size_t i = 1;
 
     for (const auto &color : palette)
         transferColour(color, i++);
 
-
     transferMsg({0x08, 0x02, styleMap.at(ITEStyle::BREATHE),
-                 speedMap.at(speed), brightnessMap.at(brightness),
+                 speed.getDeviceSpeed(), brightnessMap.at(brightness),
                  0x08, 0x00, 0x01});
 }
 
