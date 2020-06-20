@@ -16,3 +16,10 @@ executable(
   install : true,
   dependencies : libusb_dep
 )
+
+executable(
+  'ite-static',
+  ['static.cpp', ite_backlight_src],
+  install : true,
+  dependencies : libusb_dep
+)
