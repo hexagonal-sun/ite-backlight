@@ -92,6 +92,19 @@ void ITEDevice::setWaveStyle(std::array<Colour, 7> palette, Speed speed,
                  0x08, 0x00, 0x01});
 }
 
+void ITEDevice::setFlashStyle(std::array<Colour, 7> palette, Speed speed,
+                              ITEBrightness brightness)
+{
+    size_t i = 1;
+
+    for (const auto &color : palette)
+        transferColour(color, i++);
+
+    transferMsg({0x08, 0x02, styleMap.at(ITEStyle::FLASH),
+                 speed.getDeviceSpeed(), brightnessMap.at(brightness),
+                 0x08, 0x00, 0x01});
+}
+
 
 void ITEDevice::setStaticStyle(std::array<Colour, 4> palette, ITEBrightness brightness)
 {

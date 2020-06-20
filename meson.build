@@ -37,3 +37,10 @@ executable(
   install : true,
   dependencies : libusb_dep
 )
+
+executable(
+  'ite-flash',
+  ['flash.cpp', ite_backlight_src],
+  install : true,
+  dependencies : libusb_dep
+)

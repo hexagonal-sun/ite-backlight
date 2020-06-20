@@ -22,6 +22,10 @@ class ITEDevice
                           Speed speed,
                           ITEBrightness brightness);
 
+        void setFlashStyle(std::array<Colour, 7> palette,
+                           Speed speed,
+                           ITEBrightness brightness);
+
         void setStaticStyle(std::array<Colour, 4> palette,
                             ITEBrightness brightness);
 
