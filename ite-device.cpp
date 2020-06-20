@@ -1,9 +1,9 @@
 #include <gsl/gsl>
-#include <map>
+#include <unordered_map>
 
 #include "ite-device.h"
 
-const static std::map<ITESpeed, uint8_t> speedMap = {
+const static std::unordered_map<ITESpeed, uint8_t> speedMap = {
     {ITESpeed::VERY_SLOW, 0x0a},
     {ITESpeed::SLOW,      0x07},
     {ITESpeed::MEDIUM,    0x05},
@@ -11,7 +11,7 @@ const static std::map<ITESpeed, uint8_t> speedMap = {
     {ITESpeed::VERY_FAST, 0x01}
 };
 
-const static std::map<ITEBrightness, uint8_t> brightnessMap {
+const static std::unordered_map<ITEBrightness, uint8_t> brightnessMap {
     {ITEBrightness::OFF,         0x00},
     {ITEBrightness::VERY_DIM,    0x08},
     {ITEBrightness::DIM,         0x16},
@@ -27,11 +27,11 @@ enum class ITEStyle
      FLASH
 };
 
-const static std::map <ITEStyle, uint8_t> styleMap {
-    {ITEStyle::STATIC, 0x01},
+const static std::unordered_map <ITEStyle, uint8_t> styleMap {
+    {ITEStyle::STATIC,  0x01},
     {ITEStyle::BREATHE, 0x02},
-    {ITEStyle::WAVE, 0x03},
-    {ITEStyle::FLASH, 0x12}
+    {ITEStyle::WAVE,    0x03},
+    {ITEStyle::FLASH,   0x12}
 };
 
 ITEDevice::ITEDevice(libusb_context *ctx)
