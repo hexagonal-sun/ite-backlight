@@ -23,3 +23,10 @@ executable(
   install : true,
   dependencies : libusb_dep
 )
+
+executable(
+  'ite-breathe',
+  ['breathe.cpp', ite_backlight_src],
+  install : true,
+  dependencies : libusb_dep
+)
