@@ -19,6 +19,21 @@ const static std::map<ITEBrightness, uint8_t> brightnessMap {
     {ITEBrightness::VERY_BRIGHT, 0x32}
 };
 
+enum class ITEStyle
+{
+     STATIC,
+     BREATHE,
+     WAVE,
+     FLASH
+};
+
+const static std::map <ITEStyle, uint8_t> styleMap {
+    {ITEStyle::STATIC, 0x01},
+    {ITEStyle::BREATHE, 0x02},
+    {ITEStyle::WAVE, 0x03},
+    {ITEStyle::FLASH, 0x12}
+};
+
 ITEDevice::ITEDevice(libusb_context *ctx)
     : handle(nullptr)
 {
