@@ -32,6 +32,7 @@ class ITEDevice
         void setMonoColour(Colour colour, ITEBrightness brightness);
 
     private:
+        template<std::size_t N> void setPalette(const std::array<Colour, N> &palette);
         void transferColour(Colour c, uint8_t idx);
         void transferMsg(std::array<uint8_t, 8> msg);
         libusb_device_handle *handle;

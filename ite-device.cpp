@@ -69,10 +69,7 @@ ITEDevice::~ITEDevice()
 void ITEDevice::setBreatheStyle(std::array<Colour, 7> palette, Speed speed,
                                 ITEBrightness brightness)
 {
-    size_t i = 1;
-
-    for (const auto &color : palette)
-        transferColour(color, i++);
+    setPalette(palette);
 
     transferMsg({0x08, 0x02, styleMap.at(ITEStyle::BREATHE),
                  speed.getDeviceSpeed(), brightnessMap.at(brightness),
@@ -82,10 +79,7 @@ void ITEDevice::setBreatheStyle(std::array<Colour, 7> palette, Speed speed,
 void ITEDevice::setWaveStyle(std::array<Colour, 7> palette, Speed speed,
                              ITEBrightness brightness)
 {
-    size_t i = 1;
-
-    for (const auto &color : palette)
-        transferColour(color, i++);
+    setPalette(palette);
 
     transferMsg({0x08, 0x02, styleMap.at(ITEStyle::WAVE),
                  speed.getDeviceSpeed(), brightnessMap.at(brightness),
@@ -95,10 +89,7 @@ void ITEDevice::setWaveStyle(std::array<Colour, 7> palette, Speed speed,
 void ITEDevice::setFlashStyle(std::array<Colour, 7> palette, Speed speed,
                               ITEBrightness brightness)
 {
-    size_t i = 1;
-
-    for (const auto &color : palette)
-        transferColour(color, i++);
+    setPalette(palette);
 
     transferMsg({0x08, 0x02, styleMap.at(ITEStyle::FLASH),
                  speed.getDeviceSpeed(), brightnessMap.at(brightness),
@@ -108,13 +99,19 @@ void ITEDevice::setFlashStyle(std::array<Colour, 7> palette, Speed speed,
 
 void ITEDevice::setStaticStyle(std::array<Colour, 4> palette, ITEBrightness brightness)
 {
-    size_t i = 1;
-
-    for (const auto &color : palette)
-        transferColour(color, i++);
+    setPalette(palette);
 
     transferMsg({0x08, 0x02, styleMap.at(ITEStyle::STATIC),
                  0x00, brightnessMap.at(brightness), 0x08, 0x00, 0x01});
+}
+
+template <std::size_t N>
+void ITEDevice::setPalette(const std::array<Colour, N> &palette)
+{
+    size_t i = 1;
+
+    for (const auto &colour : palette)
+        transferColour(colour, i++);
 }
 
 void ITEDevice::setMonoColour(Colour colour, ITEBrightness brightness)
