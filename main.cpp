@@ -6,9 +6,24 @@
 
 #include "ite-device.h"
 
-int main()
+void usage(const char *progname)
+{
+    std::cerr << "Usage: " << progname << " COLOUR\n";
+    std::cerr << "\n";
+    std::cerr << "Set a single colour across the entire keyboard on an ITE device.\n";
+    std::cerr << "\n";
+    Colour::printUsage(std::cerr);
+}
+
+int main(int argc, char *argv[])
 {
     libusb_context *ctx;
+
+    if (argc != 2) {
+        std::cerr << "Error: expected exactly one argument.\n";
+        usage(argv[0]);
+        return 1;
+    }
 
     auto ret = libusb_init(&ctx);
 
@@ -25,8 +40,9 @@ int main()
 
     try {
         ITEDevice iteDev(ctx);
+        Colour colour(argv[1]);
 
-        iteDev.setMonoColour(ITEDefaultColours::cyan,
+        iteDev.setMonoColour(colour,
                              ITEBrightness::VERY_BRIGHT);
 
     } catch (std::exception &e) {
