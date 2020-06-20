@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <string.h>
+#include <iostream>
 
 struct Colour
 {
@@ -10,6 +11,8 @@ struct Colour
         : red(red), green(green), blue(blue) {}
 
     Colour(std::string s);
+
+    static void printUsage(std::ostream &stream);
 
     uint8_t red;
     uint8_t green;

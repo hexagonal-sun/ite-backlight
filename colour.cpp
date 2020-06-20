@@ -54,3 +54,23 @@ Colour::Colour(std::string s)
         i.second = val;
     }
 }
+
+void Colour::printUsage(std::ostream &stream)
+{
+    stream << "A COLOUR specifier is defined as three numeric values in the range\n";
+    stream << "[0, 255]. Each colour value is seperated by a ',' character and the\n";
+    stream << "values represent how much of the red, green and blue's respecitve\n";
+    stream << "colour channels are active.\n";
+    stream << "\n";
+    stream << "For example, for pure red use the string \"255,0,0\".  For cyan use\n";
+    stream << "the string \"0,255,255\". There are also the following predefined\n";
+    stream << "colours avilable:\n";
+    stream << "\n";
+    stream << "  - red\n";
+    stream << "  - green\n";
+    stream << "  - blue\n";
+    stream << "  - yellow\n";
+    stream << "  - cyan\n";
+    stream << "\n";
+    stream << "to specify one, use the colour name as the COLOUR specifier.\n";
+}
