@@ -45,6 +45,10 @@ int main(int argc, char *argv[])
         iteDev.setMonoColour(colour,
                              ITEBrightness::VERY_BRIGHT);
 
+    } catch (std::invalid_argument &e) {
+        std::cerr << "Error: " << e.what() << "\n";
+        usage(argv[0]);
+        return 1;
     } catch (std::exception &e) {
         std::cerr << "Error: " << e.what() << "\n";
         return 1;
