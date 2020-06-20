@@ -83,8 +83,9 @@ void ITEDevice::seBreatheStyle(std::array<Colour, 7> palette, ITESpeed speed,
         transferColour(color, i++);
 
 
-    transferMsg({0x08, 0x02, 0x02, speedMap.at(speed),
-                 brightnessMap.at(brightness), 0x08, 0x00, 0x01});
+    transferMsg({0x08, 0x02, styleMap.at(ITEStyle::BREATHE),
+                 speedMap.at(speed), brightnessMap.at(brightness),
+                 0x08, 0x00, 0x01});
 }
 
 void ITEDevice::setStaticStyle(std::array<Colour, 4> palette, ITEBrightness brightness)
@@ -94,8 +95,8 @@ void ITEDevice::setStaticStyle(std::array<Colour, 4> palette, ITEBrightness brig
     for (const auto &color : palette)
         transferColour(color, i++);
 
-    transferMsg({0x08, 0x02, 0x01, 0x00, brightnessMap.at(brightness),
-                 0x08, 0x00, 0x01});
+    transferMsg({0x08, 0x02, styleMap.at(ITEStyle::STATIC),
+                 0x00, brightnessMap.at(brightness), 0x08, 0x00, 0x01});
 }
 
 void ITEDevice::setMonoColour(Colour colour, ITEBrightness brightness)
