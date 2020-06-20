@@ -26,7 +26,9 @@ int main()
     try {
         ITEDevice iteDev(ctx);
 
-        iteDev.setMonoColour({0x00, 0xff, 0xff}, ITEBrightness::VERY_BRIGHT);
+        iteDev.setMonoColour(ITEDefaultColours::cyan,
+                             ITEBrightness::VERY_BRIGHT);
+
     } catch (std::exception &e) {
         std::cerr << "Error: " << e.what() << "\n";
         return 1;
