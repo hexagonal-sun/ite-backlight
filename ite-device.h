@@ -18,6 +18,10 @@ class ITEDevice
                              Speed speed,
                              ITEBrightness brightness);
 
+        void setWaveStyle(std::array<Colour, 7> palette,
+                          Speed speed,
+                          ITEBrightness brightness);
+
         void setStaticStyle(std::array<Colour, 4> palette,
                             ITEBrightness brightness);
 
