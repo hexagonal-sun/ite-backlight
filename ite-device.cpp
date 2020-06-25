@@ -59,6 +59,8 @@ ITEDevice::ITEDevice(libusb_context *ctx)
 
     if (!handle)
         throw std::runtime_error("could not find backlight controller\n");
+
+    libusb_detach_kernel_driver(handle, 1);
 }
 
 ITEDevice::~ITEDevice()
