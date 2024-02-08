@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 #include <iostream>
+#include <cstdint>
 
 enum class ITESpeed
 {
